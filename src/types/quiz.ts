@@ -33,7 +33,8 @@ export type QuestionCategory =
   | 'Leadership'
   | 'Media'
   | 'Research'
-  | 'Presentation';
+  | 'Presentation'
+  | 'Technology';
 
 export type EventCategory =
   | 'Technology'

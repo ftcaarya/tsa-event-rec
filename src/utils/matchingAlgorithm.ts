@@ -39,19 +39,25 @@ export function calculateEventMatches(
 
   // Calculate match scores for each event
   const results: QuizResult[] = events.map((event) => {
-    let matchScore = 0;
+    let totalScore = 0;
+    let validCategories = 0;
     const matchedCategories: QuestionCategory[] = [];
 
     event.requirements.categories.forEach((category) => {
       const categoryScore = averageScores.get(category) || 0;
       if (categoryScore >= event.requirements.minScore) {
-        matchScore += categoryScore;
+        totalScore += categoryScore;
+        validCategories++;
         matchedCategories.push(category);
       }
     });
 
-    // Normalize match score
-    matchScore = matchScore / event.requirements.categories.length;
+    // Calculate match score as a percentage (0-100)
+    // Each category score is out of 5, so we divide by 5 to get a 0-1 range
+    // Then multiply by 100 to get a percentage
+    const matchScore = validCategories > 0 
+      ? (totalScore / (validCategories * 5)) * 100
+      : 0;
 
     return {
       event,
