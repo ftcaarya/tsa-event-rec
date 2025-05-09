@@ -1,4 +1,5 @@
 import { QuizResult } from '@/types/quiz';
+import Image from 'next/image';
 
 interface ResultsProps {
   results: QuizResult[];
@@ -7,8 +8,22 @@ interface ResultsProps {
 
 export default function Results({ results, onRestart }: ResultsProps) {
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Your Recommended TSA Events</h2>
+    <div className="relative max-w-4xl mx-auto p-6">
+      {/* Logo background */}
+      <div className="absolute inset-0 flex justify-center items-start pointer-events-none select-none z-0">
+        <Image
+          src="/aktsia-logo.png"
+          alt="AK TSA Logo"
+          width={300}
+          height={300}
+          className="opacity-10 mt-2"
+          style={{ objectFit: 'contain' }}
+        />
+      </div>
+      {/* Header with grey box */}
+      <div className="relative z-10 inline-block bg-gray-100 bg-opacity-80 rounded-lg px-6 py-3 mb-8 shadow">
+        <h1 className="text-3xl font-bold text-gray-800">Your Results</h1>
+      </div>
       
       <div className="space-y-6">
         {results.map((result, index) => (
