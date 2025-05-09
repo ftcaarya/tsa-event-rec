@@ -8,17 +8,17 @@ interface ResultsProps {
 export default function Results({ results, onRestart }: ResultsProps) {
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6">Your Recommended TSA Events</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Your Recommended TSA Events</h2>
       
       <div className="space-y-6">
         {results.map((result, index) => (
           <div
             key={result.event.id}
-            className="bg-white rounded-lg shadow-lg p-6 border border-gray-200"
+            className="bg-white/90 rounded-lg p-6 shadow-lg"
           >
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-xl font-semibold mb-2">{result.event.name}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{result.event.name}</h3>
                 <p className="text-gray-600 mb-4">{result.event.description}</p>
               </div>
               <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -28,7 +28,7 @@ export default function Results({ results, onRestart }: ResultsProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div>
-                <h4 className="font-semibold mb-2">Skills Developed</h4>
+                <h4 className="font-semibold mb-2 text-gray-700">Skills Developed</h4>
                 <ul className="list-disc list-inside text-gray-600">
                   {result.event.skillsDeveloped.map((skill) => (
                     <li key={skill}>{skill}</li>
@@ -37,7 +37,7 @@ export default function Results({ results, onRestart }: ResultsProps) {
               </div>
 
               <div>
-                <h4 className="font-semibold mb-2">Career Paths</h4>
+                <h4 className="font-semibold mb-2 text-gray-700">Career Paths</h4>
                 <ul className="list-disc list-inside text-gray-600">
                   {result.event.careerPaths.map((career) => (
                     <li key={career}>{career}</li>
@@ -47,7 +47,7 @@ export default function Results({ results, onRestart }: ResultsProps) {
             </div>
 
             <div className="mt-4">
-              <h4 className="font-semibold mb-2">Related Activities</h4>
+              <h4 className="font-semibold mb-2 text-gray-700">Related Activities</h4>
               <div className="flex flex-wrap gap-2">
                 {result.event.relatedActivities.map((activity) => (
                   <span
@@ -66,7 +66,7 @@ export default function Results({ results, onRestart }: ResultsProps) {
       <div className="mt-8 text-center">
         <button
           onClick={onRestart}
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
         >
           Take Quiz Again
         </button>
