@@ -55,14 +55,14 @@ export default function Quiz({ questions, events, onComplete }: QuizProps) {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-xl font-semibold mb-4">{currentQuestion.text}</h2>
+      <div className="bg-white/90 rounded-lg p-6 shadow-lg">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">{currentQuestion.text}</h2>
         <div className="space-y-3">
           {currentQuestion.options.map((option) => (
             <button
               key={option.id}
               onClick={() => handleOptionSelect(option.id)}
-              className="w-full text-left p-4 rounded-lg border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-colors duration-200"
+              className="w-full text-left p-4 rounded-lg border border-gray-200 text-gray-700 hover:border-blue-500 hover:bg-blue-50 transition-colors duration-200"
             >
               {option.text}
             </button>
