@@ -21,14 +21,12 @@ export default function RootLayout({
         position: 'relative', 
         minHeight: '100vh', 
         overflowX: 'hidden',
-        background: 'transparent'
+        background: '#0a192f'
       }}>
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-          <ParticleBackgroundWrapper />
-        </div>
+        <ParticleBackgroundWrapper />
         <main style={{ 
           position: 'relative',
-          zIndex: 1,
+          zIndex: 10,
           minHeight: '100vh'
         }}>
           {children}
