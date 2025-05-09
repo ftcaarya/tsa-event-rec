@@ -17,9 +17,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ position: 'relative', minHeight: '100vh', overflowX: 'hidden' }}>
-        <ParticleBackgroundWrapper />
-        <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
+      <body className={inter.className} style={{ 
+        position: 'relative', 
+        minHeight: '100vh', 
+        overflowX: 'hidden',
+        background: 'transparent'
+      }}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <ParticleBackgroundWrapper />
+        </div>
+        <main style={{ 
+          position: 'relative',
+          zIndex: 1,
+          minHeight: '100vh'
+        }}>
+          {children}
+        </main>
       </body>
     </html>
   );

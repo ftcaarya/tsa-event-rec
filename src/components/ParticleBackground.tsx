@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useRef, useEffect } from 'react';
 
-const PARTICLE_COUNT = 60;
-const PARTICLE_COLOR = 'rgba(0,255,255,0.7)'; // Cyan
-const BG_COLOR = '#15306b'; // Dark blue
+const PARTICLE_COUNT = 100;
+const PARTICLE_COLOR = 'rgba(0,255,255,0.5)';
+const BG_COLOR = '#0a192f';
 
 function randomBetween(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -10,18 +12,26 @@ function randomBetween(a: number, b: number) {
 
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particles = useRef(
-    Array.from({ length: PARTICLE_COUNT }, () => ({
+  const particles = useRef<Array<{
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    radius: number;
+  }>>([]);
+  const mouse = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // Initialize particles after mount
+    particles.current = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: randomBetween(0, window.innerWidth),
       y: randomBetween(0, window.innerHeight),
       vx: randomBetween(-0.5, 0.5),
       vy: randomBetween(-0.5, 0.5),
       radius: randomBetween(1.5, 3.5),
-    }))
-  );
-  const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    }));
+    mouse.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -99,10 +109,11 @@ const ParticleBackground: React.FC = () => {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
         pointerEvents: 'none',
+        backgroundColor: '#0a192f'
       }}
     />
   );
