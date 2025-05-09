@@ -473,6 +473,12 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.fixed {
+  position: fixed;
+}
+.relative {
+  position: relative;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -507,6 +513,9 @@ video {
 .grid {
   display: grid;
 }
+.hidden {
+  display: none;
+}
 .h-2 {
   height: 0.5rem;
 }
@@ -524,6 +533,9 @@ video {
 }
 .max-w-4xl {
   max-width: 56rem;
+}
+.resize {
+  resize: both;
 }
 .list-inside {
   list-style-position: inside;
