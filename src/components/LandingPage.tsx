@@ -56,7 +56,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartQuiz }) => {
           <div className="mb-6 pb-4 border-b border-white/20">
             <h3 className="text-base font-semibold text-blue-200 mb-3">Built By</h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {['Aarya Raut', 'Anirvin Poturaju'].map((tech) => (
+              {['Aarya Raut', 'Anirvin Potaraju'].map((tech) => (
                 <span
                   key={tech}
                   className="bg-white/20 text-white px-3 py-1 rounded-full text-xs backdrop-blur-sm border border-white/20"
