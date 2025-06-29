@@ -24,13 +24,13 @@ export default function RootLayout({
         background: '#0a192f'
       }}>
         <ParticleBackgroundWrapper />
-        <main style={{ 
+        <div style={{ 
           position: 'relative',
-          zIndex: 10,
+          zIndex: 1,
           minHeight: '100vh'
         }}>
           {children}
-        </main>
+        </div>
       </body>
     </html>
   );

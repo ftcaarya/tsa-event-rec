@@ -2,8 +2,8 @@
 
 import React, { useRef, useEffect } from 'react';
 
-const PARTICLE_COUNT = 200;
-const PARTICLE_COLOR = '#00ffff';
+const PARTICLE_COUNT = 100;
+const PARTICLE_COLOR = '#00bfff'; // Neon blue
 
 function randomBetween(a: number, b: number) {
   return a + Math.random() * (b - a);
@@ -25,9 +25,9 @@ const ParticleBackground: React.FC = () => {
     particles.current = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: randomBetween(0, window.innerWidth),
       y: randomBetween(0, window.innerHeight),
-      vx: randomBetween(-0.5, 0.5),
-      vy: randomBetween(-0.5, 0.5),
-      radius: randomBetween(2, 5),
+      vx: randomBetween(-1, 1),
+      vy: randomBetween(-1, 1),
+      radius: randomBetween(3, 6),
     }));
     mouse.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
@@ -69,9 +69,12 @@ const ParticleBackground: React.FC = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
         ctx.fillStyle = PARTICLE_COLOR;
-        ctx.shadowColor = '#00ffff';
-        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#00bfff';
+        ctx.shadowBlur = 20;
         ctx.fill();
+        
+        // Reset shadow for next draw
+        ctx.shadowBlur = 0;
       }
 
       // Draw lines to mouse if close
@@ -83,9 +86,12 @@ const ParticleBackground: React.FC = () => {
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.current.x, mouse.current.y);
-          ctx.strokeStyle = `rgba(0, 255, 255, ${1 - dist / 150})`;
-          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = `rgba(0, 191, 255, ${(1 - dist / 150) * 0.8})`;
+          ctx.lineWidth = 2;
+          ctx.shadowColor = '#00bfff';
+          ctx.shadowBlur = 10;
           ctx.stroke();
+          ctx.shadowBlur = 0;
         }
       }
 
@@ -108,8 +114,9 @@ const ParticleBackground: React.FC = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 0,
+        zIndex: -1,
         pointerEvents: 'none',
+        background: 'transparent',
       }}
     />
   );
