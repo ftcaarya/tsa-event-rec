@@ -6,6 +6,7 @@ import Results from '@/components/Results';
 import { QuizResult } from '@/types/quiz';
 import { quizQuestions } from '@/data/quizQuestions';
 import { tsaEvents } from '@/data/tsaEvents';
+import GradientText from '@/components/GradientText';
 
 export default function Home() {
   const [quizResults, setQuizResults] = useState<QuizResult[] | null>(null);
@@ -19,15 +20,21 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen py-12">
+    <div className="min-h-screen py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8 text-white">
-          TSA Event Recommender
-        </h1>
-        <p className="text-center text-white/90 mb-12 max-w-2xl mx-auto">
-          Take this short quiz to discover TSA competitive events that match your
-          interests, skills, and career aspirations.
-        </p>
+        <div className="text-center mb-12">
+          <GradientText
+            className="text-5xl font-bold"
+            colors={['#b44aff', '#7c3aed', '#3b82f6', '#7c3aed', '#b44aff']}
+            animationSpeed={6}
+          >
+            TSA Event Recommender
+          </GradientText>
+          <p className="text-white/60 mt-4 text-lg max-w-2xl mx-auto">
+            Discover the TSA competitive events that match your interests,
+            skills, and career goals.
+          </p>
+        </div>
 
         {quizResults ? (
           <Results results={quizResults} onRestart={handleRestart} />
@@ -39,6 +46,6 @@ export default function Home() {
           />
         )}
       </div>
-    </main>
+    </div>
   );
-} 
+}

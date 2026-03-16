@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import ParticleBackgroundWrapper from '@/components/ParticleBackgroundWrapper';
+import AuroraBackgroundWrapper from '@/components/AuroraBackgroundWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,14 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ 
-        position: 'relative', 
-        minHeight: '100vh', 
+      <body className={inter.className} style={{
+        position: 'relative',
+        minHeight: '100vh',
         overflowX: 'hidden',
-        background: '#0a192f'
+        background: '#080215'
       }}>
-        <ParticleBackgroundWrapper />
-        <main style={{ 
+        <AuroraBackgroundWrapper />
+        <main style={{
           position: 'relative',
           zIndex: 10,
           minHeight: '100vh'
@@ -34,4 +34,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-} 
+}

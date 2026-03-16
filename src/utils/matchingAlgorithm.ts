@@ -12,7 +12,6 @@ export function calculateEventMatches(
 ): QuizResult[] {
   // Calculate category scores
   const categoryScores = new Map<QuestionCategory, number>();
-  const categoryCounts = new Map<QuestionCategory, number>();
   const categoryMaxScores = new Map<QuestionCategory, number>();
 
   responses.forEach((response) => {
@@ -21,18 +20,14 @@ export function calculateEventMatches(
 
     if (question && option) {
       const currentScore = categoryScores.get(question.category) || 0;
-      const currentCount = categoryCounts.get(question.category) || 0;
       const currentMaxScore = categoryMaxScores.get(question.category) || 0;
-      
+
       // Add weighted score
       categoryScores.set(
         question.category,
         currentScore + (option.weight * question.importance)
       );
-      
-      // Track count of questions
-      categoryCounts.set(question.category, currentCount + 1);
-      
+
       // Track maximum possible score (5 * importance)
       categoryMaxScores.set(
         question.category,
