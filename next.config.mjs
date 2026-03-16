@@ -5,4 +5,4 @@ const nextConfig = {
   assetPrefix: '/tsa-event-rec/',
 };
 
-module.exports = nextConfig;
+export default nextConfig;
